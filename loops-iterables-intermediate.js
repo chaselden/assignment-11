@@ -96,13 +96,9 @@ console.assert(sumOfArray([10, 9, 8, 3, 4, 5, 6]) === 45);
 
         newStr = newStr + strInput[i]
         console.log(newStr)
-       //  console.log("strInput[",i,"]", strInput[i])
-
-       //  console.log(newStr)
      }
-   return newStr //output: string in reverse
+   return newStr
  }
-
 
 console.assert(reverse("books") === "skoob")
 console.assert(reverse("we don't want no trouble") === "elbuort on tnaw t'nod ew")
@@ -147,23 +143,37 @@ console.assert(fizzbuzz(10) === "..fizz.buzzfizz..fizzbuzz")
 console.assert(fizzbuzz(20) === "..fizz.buzzfizz..fizzbuzz.fizz..FizZBuzZ..fizz.buzz")
 
 // /**
- * Part 5
- *
- * Write a function findLongestWord() that takes a string of
- words and returns the longest word.
- * i.e. findLongestWord("a book full of dogs") should return "book"
- */
+ // * Part 5
+ // *
+ // * Write a function findLongestWord() that takes a string of
+ // words and returns the longest word.
+ // * i.e. findLongestWord("a book full of dogs") should return "book"
+ // */
+ var delApos = function(str){
+ var apostStr = str.split(" ");
+ var noApost = '';
 
- var findLongestWord = function( bunchaWords){
-   var bigWord = bunchaWords.split(' ');
-   var longEst = 0;
+ 		for (var i = 0; i < apostStr.length; i++){
+ 			  if (apostStr[i] === "'"){
+ 				noApost = noApost + apostStr[i]
+            }
+          }
+    		     return noApost
+ }
 
-   for(var i = 0; i < bigWord.length - 1; i++){
 
-     if(bigWord.length > longEst){
-       longEst = bigWord.length;
+ var findLongestWord = function(sentence){
+   var bigWord = sentence.split('');
+   var longEst = "";
+
+   for(var i = 0; i < bigWord.length; i++){
+       if(longEst < bigWord[i]){
+          longEst = bigWord[i,1];
+
+        }else if(longEst = bigWord[i]){
+              longEst = longEst + delApos(bigWord[i]);
      }
-   }
+ }
      return longEst;
 }
 
